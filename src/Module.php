@@ -66,7 +66,7 @@ class Module implements ModuleInterface, AutoloaderProviderInterface, BootstrapL
 
         $serviceManager->get(I18nListener::class)
             ->attach(
-                $target->getServicemanager(),
+                $target->getEventManager(),
                 $serviceManager->get(self::class)->get('default_listener_priority')
             );
     }

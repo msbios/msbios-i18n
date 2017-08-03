@@ -34,10 +34,13 @@ return [
     //],
 
     'service_manager' => [
+        'invokables' => [
+            Listener\I18nListener::class => Listener\I18nListener::class
+        ],
         'factories' => [
             Module::class => Factory\ModuleFactory::class,
             \Zend\I18n\Translator\TranslatorInterface::class =>
-                \Zend\I18n\Translator\TranslatorServiceFactory::class,
+                \Zend\I18n\Translator\TranslatorServiceFactory::class
         ],
         'aliases' => [
             'translator' => \Zend\I18n\Translator\TranslatorInterface::class

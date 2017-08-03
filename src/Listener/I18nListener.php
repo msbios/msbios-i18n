@@ -6,6 +6,7 @@
 namespace MSBios\I18n\Listener;
 
 use MSBios\I18n\Module;
+use MSBios\I18n\Session\Container;
 use Zend\EventManager\AbstractListenerAggregate;
 use Zend\EventManager\EventInterface;
 use Zend\EventManager\EventManagerInterface;
