@@ -35,10 +35,11 @@ return [
 
     'service_manager' => [
         'invokables' => [
-            Listener\I18nListener::class => Listener\I18nListener::class
+            Listener\SessionListener::class
         ],
         'factories' => [
             Module::class => Factory\ModuleFactory::class,
+
             \Zend\I18n\Translator\TranslatorInterface::class =>
                 \Zend\I18n\Translator\TranslatorServiceFactory::class
         ],
@@ -59,10 +60,13 @@ return [
     ],
 
     Module::class => [
-        // Default locale
-        'default_locale' => 'en_US',
-
-        // Default listener priority
-        'default_listener_priority' => 100500
+        'listeners' => [
+            [
+                'listener' => Listener\SessionListener::class,
+                'method' => 'onDispatch',
+                'event' => \Zend\Mvc\MvcEvent::EVENT_DISPATCH,
+                'priority' => 1,
+            ],
+        ],
     ]
 ];

@@ -5,9 +5,9 @@
  */
 namespace MSBios\I18n;
 
-use MSBios\I18n\Listener\I18nListener;
 use MSBios\ModuleInterface;
 use Zend\EventManager\EventInterface;
+use Zend\EventManager\LazyListenerAggregate;
 use Zend\Loader\AutoloaderFactory;
 use Zend\Loader\StandardAutoloader;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
@@ -19,7 +19,10 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  * Class Module
  * @package MSBios\I18n
  */
-class Module implements ModuleInterface, AutoloaderProviderInterface, BootstrapListenerInterface
+class Module implements
+    ModuleInterface,
+    AutoloaderProviderInterface,
+    BootstrapListenerInterface
 {
     /** @const VERSION */
     const VERSION = '0.0.1';
@@ -64,10 +67,9 @@ class Module implements ModuleInterface, AutoloaderProviderInterface, BootstrapL
         /** @var ServiceLocatorInterface $serviceManager */
         $serviceManager = $target->getServiceManager();
 
-        $serviceManager->get(I18nListener::class)
-            ->attach(
-                $target->getEventManager(),
-                $serviceManager->get(self::class)->get('default_listener_priority')
-            );
+        (new LazyListenerAggregate(
+            $serviceManager->get(self::class)->get('listeners')->toArray(),
+            $serviceManager
+        ))->attach($target->getEventManager());
     }
 }
