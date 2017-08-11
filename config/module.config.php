@@ -35,7 +35,8 @@ return [
 
     'service_manager' => [
         'invokables' => [
-            Listener\SessionListener::class
+            Listener\RouteListener::class,
+            Listener\SessionListener::class,
         ],
         'factories' => [
             Module::class => Factory\ModuleFactory::class,
@@ -65,6 +66,11 @@ return [
                 'listener' => Listener\SessionListener::class,
                 'method' => 'onDispatch',
                 'event' => \Zend\Mvc\MvcEvent::EVENT_DISPATCH,
+                'priority' => 1,
+            ],            [
+                'listener' => Listener\RouteListener::class,
+                'method' => 'onRoute',
+                'event' => \Zend\Mvc\MvcEvent::EVENT_ROUTE,
                 'priority' => 1,
             ],
         ],

@@ -5,14 +5,13 @@
  */
 namespace MSBios\I18n\Listener;
 
-use MSBios\I18n\Module;
 use MSBios\I18n\Session\Container;
 use Zend\EventManager\EventInterface;
 use Zend\I18n\Translator\TranslatorInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
- * Class I18nListener
+ * Class SessionListener
  * @package MSBios\I18n\Listener
  */
 class SessionListener
@@ -22,17 +21,20 @@ class SessionListener
      */
     public function onDispatch(EventInterface $event)
     {
-         /** @var ServiceLocatorInterface $serviceLocator */
-         $serviceLocator = $event->getTarget()
+        /** @var ServiceLocatorInterface $serviceLocator */
+        $serviceLocator = $event->getApplication()
              ->getServiceManager();
 
          /** @var TranslatorInterface $translator */
          $translator = $serviceLocator->get(TranslatorInterface::class);
 
-//         $translator->setLocale((new Container)->getLocale())
-//            ->setFallbackLocale($serviceLocator->get(Module::class)['default_locale']);
-//
-//         $event->getRouter()
-//            ->setDefaultParam('locale', $translator->getLocale());
+         if ($locale = (new Container)->getLocale()) {
+             $translator->setLocale($locale);
+                 // ->setFallbackLocale($serviceLocator->get(Module::class)['default_locale']);
+         }
+
+
+        // $event->getRouter()
+        //    ->setDefaultParam('locale', $translator->getLocale());
     }
 }
