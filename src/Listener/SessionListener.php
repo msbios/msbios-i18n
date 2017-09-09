@@ -28,10 +28,10 @@ class SessionListener
          /** @var TranslatorInterface $translator */
          $translator = $serviceLocator->get(TranslatorInterface::class);
 
-         if ($locale = (new Container)->getLocale()) {
-             $translator->setLocale($locale);
-                 // ->setFallbackLocale($serviceLocator->get(Module::class)['default_locale']);
-         }
+        if ($locale = (new Container)->getLocale()) {
+            $translator->setLocale($locale);
+                // ->setFallbackLocale($serviceLocator->get(Module::class)['default_locale']);
+        }
 
 
         // $event->getRouter()

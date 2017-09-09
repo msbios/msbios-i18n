@@ -5,41 +5,16 @@
  */
 namespace MSBios\I18n;
 
+use Zend\ServiceManager\Factory\InvokableFactory;
+
 return [
 
-    //'router' => [
-    //    'routes' => [
-    //        'locale' => [
-    //            'type' => \Zend\Router\Http\Segment::class,
-    //            'options' => [
-    //                'route' => '/:locale[/:redirect]',
-    //                'defaults' => [
-    //                    'controller' => Controller\IndexController::class,
-    //                    'action' => 'index',
-    //                ],
-    //                'constraints' => [
-    //                    'locale' => '(?i)[a-z]{2,3}(?:_[a-z]{2})?',
-    //                ],
-    //            ],
-    //            'may_terminate' => true
-    //        ],
-    //    ],
-    //],
-
-    //'controllers' => [
-    //    'factories' => [
-    //        Controller\IndexController::class =>
-    //            \Zend\ServiceManager\Factory\InvokableFactory::class,
-    //    ],
-    //],
-
     'service_manager' => [
-        'invokables' => [
-            Listener\RouteListener::class,
-            Listener\SessionListener::class,
-        ],
         'factories' => [
+
             Module::class => Factory\ModuleFactory::class,
+            Listener\RouteListener::class => InvokableFactory::class,
+            Listener\SessionListener::class => InvokableFactory::class,
 
             \Zend\I18n\Translator\TranslatorInterface::class =>
                 \Zend\I18n\Translator\TranslatorServiceFactory::class
