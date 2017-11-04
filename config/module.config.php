@@ -11,10 +11,14 @@ return [
 
     'service_manager' => [
         'factories' => [
+            Module::class =>
+                Factory\ModuleFactory::class,
 
-            Module::class => Factory\ModuleFactory::class,
-            Listener\RouteListener::class => InvokableFactory::class,
-            Listener\SessionListener::class => InvokableFactory::class,
+            // listeners
+            Listener\RouteListener::class =>
+                InvokableFactory::class,
+            Listener\SessionListener::class =>
+                InvokableFactory::class,
 
             \Zend\I18n\Translator\TranslatorInterface::class =>
                 \Zend\I18n\Translator\TranslatorServiceFactory::class
@@ -47,7 +51,7 @@ return [
                 'method' => 'onRoute',
                 'event' => \Zend\Mvc\MvcEvent::EVENT_ROUTE,
                 'priority' => 1,
-            ],
-        ],
+            ]
+        ]
     ]
 ];
