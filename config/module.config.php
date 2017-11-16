@@ -36,7 +36,7 @@ return [
                 'base_dir' => __DIR__ . '/../language',
                 'pattern' => '%s.mo'
             ],
-        ],
+        ]
     ],
 
     Module::class => [
@@ -46,7 +46,8 @@ return [
                 'method' => 'onDispatch',
                 'event' => \Zend\Mvc\MvcEvent::EVENT_DISPATCH,
                 'priority' => 1,
-            ],            [
+            ],
+            [
                 'listener' => Listener\RouteListener::class,
                 'method' => 'onRoute',
                 'event' => \Zend\Mvc\MvcEvent::EVENT_ROUTE,

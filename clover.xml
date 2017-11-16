@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1510822812">
+  <project timestamp="1510822812">
+    <package name="MSBios\I18n\Controller">
+      <file name="/home/judzhin/Projects/_modules/msbios-i18n/src/Controller/IndexController.php">
+        <class name="IndexController" namespace="MSBios\I18n\Controller" fullPackage="MSBios" package="MSBios">
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="5" coveredelements="0"/>
+        </class>
+        <line num="19" type="method" name="indexAction" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <metrics loc="24" ncloc="13" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="5" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="MSbios\I18n\Factory">
+      <file name="/home/judzhin/Projects/_modules/msbios-i18n/src/Factory/ModuleFactory.php">
+        <class name="ModuleFactory" namespace="MSbios\I18n\Factory" fullPackage="MSbios" package="MSbios">
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
+        </class>
+        <line num="24" type="method" name="__invoke" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <metrics loc="28" ncloc="14" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="MSBios\I18n\Listener">
+      <file name="/home/judzhin/Projects/_modules/msbios-i18n/src/Listener/RouteListener.php">
+        <class name="RouteListener" namespace="MSBios\I18n\Listener" fullPackage="MSBios" package="MSBios">
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="14" coveredelements="0"/>
+        </class>
+        <line num="23" type="method" name="onRoute" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="42" type="stmt" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <metrics loc="44" ncloc="29" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="14" coveredelements="0"/>
+      </file>
+      <file name="/home/judzhin/Projects/_modules/msbios-i18n/src/Listener/SessionListener.php">
+        <class name="SessionListener" namespace="MSBios\I18n\Listener" fullPackage="MSBios" package="MSBios">
+          <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="9" coveredelements="0"/>
+        </class>
+        <line num="22" type="method" name="onDispatch" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <metrics loc="40" ncloc="21" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="9" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="MSBios\I18n">
+      <file name="/home/judzhin/Projects/_modules/msbios-i18n/src/Module.php">
+        <class name="Module" namespace="MSBios\I18n" fullPackage="MSBios" package="MSBios">
+          <metrics complexity="3" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="3" elements="13" coveredelements="5"/>
+        </class>
+        <line num="35" type="method" name="getConfig" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="37" type="stmt" count="1"/>
+        <line num="45" type="method" name="getAutoloaderConfig" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="48" type="stmt" count="1"/>
+        <line num="49" type="stmt" count="1"/>
+        <line num="62" type="method" name="onBootstrap" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="65" type="stmt" count="0"/>
+        <line num="68" type="stmt" count="0"/>
+        <line num="70" type="stmt" count="0"/>
+        <line num="71" type="stmt" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <line num="73" type="stmt" count="0"/>
+        <line num="74" type="stmt" count="0"/>
+        <metrics loc="75" ncloc="48" classes="1" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="3" elements="13" coveredelements="5"/>
+      </file>
+    </package>
+    <package name="MSBios\I18n\Session">
+      <file name="/home/judzhin/Projects/_modules/msbios-i18n/src/Session/Container.php">
+        <class name="Container" namespace="MSBios\I18n\Session" fullPackage="MSBios" package="MSBios">
+          <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="12" coveredelements="0"/>
+        </class>
+        <line num="22" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="30" type="method" name="getLocale" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="38" type="method" name="setLocale" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="41" type="stmt" count="0"/>
+        <metrics loc="42" ncloc="23" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="12" coveredelements="0"/>
+      </file>
+    </package>
+    <metrics files="6" loc="253" ncloc="148" classes="6" methods="10" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="47" coveredstatements="3" elements="57" coveredelements="5"/>
+  </project>
+</coverage>

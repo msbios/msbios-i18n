@@ -8,6 +8,7 @@ namespace MSBios\I18n\Listener;
 
 use Zend\EventManager\EventInterface;
 use Zend\I18n\Translator\TranslatorInterface;
+use Zend\Router\Http\RouteMatch;
 
 /**
  * Class RouteListener
@@ -21,17 +22,23 @@ class RouteListener
      */
     public function onRoute(EventInterface $event)
     {
-        /** @var string $locale */
-        $locale = $event->getRouteMatch()
-            ->getParam('locale');
-
-        $event->getTarget()
+        /** @var TranslatorInterface $translator */
+        $translator = $event->getTarget()
             ->getServiceManager()
-            ->get(TranslatorInterface::class)
-            ->setLocale($locale)
+            ->get(TranslatorInterface::class);
+
+        /** @var RouteMatch $routeMatch */
+        $routeMatch = $event->getRouteMatch();
+
+        /** @var string $locale */
+        $locale = $routeMatch->getParam(
+            'locale',
+            $translator->getLocale()
+        );
+
+        $translator->setLocale($locale)
             ->setFallbackLocale($locale);
 
-        $event->getRouter()
-            ->setDefaultParam('locale', $locale);
+        $routeMatch->setParam('locale', $locale);
     }
 }
