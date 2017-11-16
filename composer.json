@@ -59,5 +59,8 @@
     "zf": {
       "component": "MSBios\\I18n"
     }
-  }
+  },
+  "bin": [
+    "bin/generate-language.sh"
+  ]
 }
