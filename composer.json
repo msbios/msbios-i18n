@@ -16,7 +16,10 @@
   "autoload": {
     "psr-4": {
       "MSBios\\I18n\\": "src/"
-    }
+    },
+    "files": [
+      "helpers.php"
+    ]
   },
   "autoload-dev": {
     "psr-4": {
