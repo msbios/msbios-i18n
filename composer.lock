@@ -2198,7 +2198,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.3.12",
+            "version": "v3.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
@@ -2482,7 +2482,7 @@
                 "plugin",
                 "zf"
             ],
-            "time": "2017-11-06 22:51:22"
+            "time": "2017-11-06T22:51:22+00:00"
         },
         {
             "name": "zendframework/zend-console",

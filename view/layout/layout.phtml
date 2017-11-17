@@ -1,6 +1,6 @@
 <?= $this->doctype() ?>
 
-<html lang="en">
+<html lang="<?= $this->plugin('translate')->getTranslator()->getLocale(); ?>">
 <head>
     <meta charset="utf-8">
     <?= $this->headTitle('ZF Skeleton Application')->setSeparator(' - ')->setAutoEscape(false) ?>
@@ -39,6 +39,7 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
+                <li><a href="<?= $this->url('home/application'); ?>">Application</a></li>
             </ul>
         </div>
     </div>

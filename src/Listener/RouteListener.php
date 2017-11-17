@@ -39,6 +39,9 @@ class RouteListener
         $translator->setLocale($locale)
             ->setFallbackLocale($locale);
 
+        $event->getRouter()
+            ->setDefaultParam('locale', $locale);
+
         $routeMatch->setParam('locale', $locale);
     }
 }

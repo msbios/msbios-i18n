@@ -8,6 +8,7 @@ namespace MSBios\I18n;
 use MSBios\ModuleInterface;
 use Zend\EventManager\EventInterface;
 use Zend\EventManager\LazyListenerAggregate;
+use Zend\I18n\Translator\TranslatorInterface;
 use Zend\Loader\AutoloaderFactory;
 use Zend\Loader\StandardAutoloader;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
@@ -25,7 +26,7 @@ class Module implements
     BootstrapListenerInterface
 {
     /** @const VERSION */
-    const VERSION = '1.0.4';
+    const VERSION = '1.0.5';
 
     /**
      * Returns configuration to merge with application configuration
@@ -66,6 +67,11 @@ class Module implements
 
         /** @var ServiceLocatorInterface $serviceManager */
         $serviceManager = $target->getServiceManager();
+
+        $e->getRouter()->setDefaultParam(
+            'locale',
+            $serviceManager->get(TranslatorInterface::class)->getLocale()
+        );
 
         (new LazyListenerAggregate(
             $serviceManager->get(self::class)['listeners'],

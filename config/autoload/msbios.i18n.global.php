@@ -20,13 +20,21 @@ return [
                     'route' => '/[:locale[/]]',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
-                        'action' => 'index',
-                        // 'locale' => 'eeee'
+                        'action' => 'index'
                     ],
                     'constraints' => [
                         'locale' => '[a-z]{2,3}_[A-Z]{2}?',
                     ]
                 ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'application' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => 'application[/]'
+                        ]
+                    ]
+                ]
             ],
         ],
     ],
@@ -52,5 +60,9 @@ return [
         'template_path_stack' => [
             __DIR__ . '/../../view',
         ],
-    ]
+    ],
+
+    'translator' => [
+         // 'locale' => 'ru_RU'
+    ],
 ];
