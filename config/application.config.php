@@ -8,9 +8,7 @@ return [
     'modules' => [
         'Zend\Serializer',
         'Zend\Cache',
-        'Zend\Log',
         'Zend\Mvc\Plugin\FilePrg',
-        'Zend\Router',
         'Zend\Form',
         'Zend\Hydrator',
         'Zend\InputFilter',
@@ -18,6 +16,8 @@ return [
         'Zend\Mvc\Plugin\FlashMessenger',
         'Zend\Mvc\Plugin\Identity',
         'Zend\Mvc\Plugin\Prg',
+        'Zend\Log',
+        'Zend\Router',
         'Zend\I18n',
         'ZendDeveloperTools',
         'MSBios\I18n',

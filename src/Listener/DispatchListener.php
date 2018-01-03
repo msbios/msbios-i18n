@@ -11,10 +11,10 @@ use Zend\I18n\Translator\TranslatorInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
- * Class SessionListener
+ * Class DispatchListener
  * @package MSBios\I18n\Listener
  */
-class SessionListener
+class DispatchListener
 {
     /**
      * @param EventInterface $event
@@ -30,11 +30,6 @@ class SessionListener
 
         if ($locale = (new Container)->getLocale()) {
             $translator->setLocale($locale);
-                // ->setFallbackLocale($serviceLocator->get(Module::class)['default_locale']);
         }
-
-
-        // $event->getRouter()
-        //    ->setDefaultParam('locale', $translator->getLocale());
     }
 }

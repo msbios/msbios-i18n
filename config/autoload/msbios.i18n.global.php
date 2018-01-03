@@ -7,6 +7,8 @@
 
 namespace MSBios\I18n;
 
+use MSBios\I18n\Initializer\TranslatorInitializer;
+use Zend\Router\Http\Regex;
 use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
@@ -33,16 +35,10 @@ return [
                         'options' => [
                             'route' => 'application[/]'
                         ]
-                    ]
+                    ],
                 ]
             ],
         ],
-    ],
-    'controllers' => [
-        'factories' => [
-            Controller\IndexController::class =>
-                InvokableFactory::class,
-        ]
     ],
 
     'view_manager' => [
@@ -59,6 +55,9 @@ return [
         ],
         'template_path_stack' => [
             __DIR__ . '/../../view',
+        ],
+        'strategies' => [
+            'ViewJsonStrategy',
         ],
     ],
 

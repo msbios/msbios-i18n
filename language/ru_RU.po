@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MSBios I18n\n"
-"POT-Creation-Date: 2017-11-17 13:13+0200\n"
-"PO-Revision-Date: 2017-11-17 13:15+0200\n"
+"POT-Creation-Date: 2018-01-01 20:26+0200\n"
+"PO-Revision-Date: 2018-01-01 20:26+0200\n"
 "Last-Translator: \n"
 "Language-Team: MSBios Team <info@msbios.com>\n"
 "Language: ru_RU\n"
@@ -57,27 +57,3 @@ msgstr "I18n Модуль"
 #: ms-bios/i18n/index/index.phtml:2
 msgid "Locale param"
 msgstr "Параметр локали"
-
-#~ msgid "Persons"
-#~ msgstr "Персоны"
-
-#~ msgid "Institutions"
-#~ msgstr "Учреждения"
-
-#~ msgid "Media"
-#~ msgstr "Медиа"
-
-#~ msgid "Elections"
-#~ msgstr "Выборы"
-
-#~ msgid "Documents"
-#~ msgstr "Документы"
-
-#~ msgid "Who are we?"
-#~ msgstr "Кто мы?"
-
-#~ msgid "News"
-#~ msgstr "Новости"
-
-#~ msgid "Videos"
-#~ msgstr "Видео"
