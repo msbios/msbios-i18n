@@ -7,13 +7,16 @@ namespace MSBios\I18n;
 
 use MSBios\ModuleInterface;
 use Zend\EventManager\EventInterface;
+use Zend\EventManager\EventManagerInterface;
 use Zend\EventManager\LazyListenerAggregate;
+use Zend\EventManager\ListenerAggregateInterface;
 use Zend\I18n\Translator\TranslatorInterface;
 use Zend\Loader\AutoloaderFactory;
 use Zend\Loader\StandardAutoloader;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\BootstrapListenerInterface;
 use Zend\Mvc\ApplicationInterface;
+use Zend\Mvc\ModuleRouteListener;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
@@ -26,7 +29,7 @@ class Module implements
     BootstrapListenerInterface
 {
     /** @const VERSION */
-    const VERSION = '1.0.6';
+    const VERSION = '1.0.7';
 
     /**
      * Returns configuration to merge with application configuration
@@ -62,20 +65,39 @@ class Module implements
      */
     public function onBootstrap(EventInterface $e)
     {
+        /** @var EventManagerInterface $eventManager */
+        $eventManager = $e->getApplication()
+            ->getEventManager();
+
+        /** @var ListenerAggregateInterface $moduleRouteListener */
+        $moduleRouteListener = new ModuleRouteListener;
+        $moduleRouteListener->attach($eventManager);
+
         /** @var ApplicationInterface $target */
         $target = $e->getTarget();
 
         /** @var ServiceLocatorInterface $serviceManager */
         $serviceManager = $target->getServiceManager();
 
-        $e->getRouter()->setDefaultParam(
-            'locale',
-            $serviceManager->get(TranslatorInterface::class)->getLocale()
-        );
-
         (new LazyListenerAggregate(
             $serviceManager->get(self::class)['listeners'],
             $serviceManager
         ))->attach($target->getEventManager());
+
+        $this->bootstrapRouter($e);
+    }
+
+    /**
+     * @param EventInterface $e
+     */
+    public function bootstrapRouter(EventInterface $e)
+    {
+        $e->getRouter()->setDefaultParam(
+            'locale',
+            $e->getTarget()
+                ->getServiceManager()
+                ->get(TranslatorInterface::class)
+                ->getLocale()
+        );
     }
 }
