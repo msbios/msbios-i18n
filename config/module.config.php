@@ -27,6 +27,7 @@ return [
             ],
         ],
     ],
+
     'controllers' => [
         'factories' => [
             Controller\IndexController::class =>
@@ -59,6 +60,12 @@ return [
                 'base_dir' => __DIR__ . '/../language',
                 'pattern' => '%s.mo'
             ],
+        ]
+    ],
+
+    'view_manager' => [
+        'strategies' => [
+            'ViewJsonStrategy'
         ]
     ],
 
