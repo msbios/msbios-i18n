@@ -20,6 +20,16 @@ class IndexController extends AbstractActionController implements TranslatorAwar
     use TranslatorAwareTrait;
 
     /**
+     * IndexController constructor.
+     *
+     * @param TranslatorInterface $translator
+     */
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->setTranslator($translator);
+    }
+
+    /**
      * @return \Zend\View\Model\ViewModel
      */
     public function indexAction()

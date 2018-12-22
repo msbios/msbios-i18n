@@ -51,9 +51,8 @@
     ],
     "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
     "upload-coverage": "coveralls -v",
-    "commit": "git add . && git commit -a -m \"Lazy Composer Commiter\" && git push",
     "msgfmt": "find . -name \\*.po -execdir sh -c 'msgfmt \"$0\" -o `basename $0 .po`.mo' '{}' \\;",
-    "serve": "php -S 0.0.0.0:3107 -t public index.php"
+    "serve": "php -S 0.0.0.0:3107 -t public public/index.php"
   },
   "extra": {
     "zf": {
@@ -61,6 +60,7 @@
     }
   },
   "bin": [
-    "bin/generate-language.sh"
+    "bin/generate-language.sh",
+    "msbios-i18n.sh"
   ]
 }

@@ -6,6 +6,7 @@
 
 namespace MSBios\I18n;
 
+use MSBios\Factory\ModuleFactory;
 use Zend\Router\Http\Regex;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
@@ -29,26 +30,21 @@ return [
     'controllers' => [
         'factories' => [
             Controller\IndexController::class =>
-                InvokableFactory::class,
+                Factory\IndexControllerFactory::class,
         ],
-        'initializers' => [
-            new Initializer\TranslatorInitializer
-        ]
     ],
 
     'service_manager' => [
         'factories' => [
-            // Services
+            // services
             Module::class =>
-                Factory\ModuleFactory::class,
+                ModuleFactory::class,
             \Zend\I18n\Translator\TranslatorInterface::class =>
                 \Zend\I18n\Translator\TranslatorServiceFactory::class,
 
             // listeners
-            Listener\DispatchListener::class =>
-                InvokableFactory::class,
-            Listener\RouteListener::class =>
-                InvokableFactory::class
+            ListenerAggregate::class =>
+                Factory\ListenerAggregateFactory::class
         ],
         'aliases' => [
             'translator' => \Zend\I18n\Translator\TranslatorInterface::class
@@ -66,24 +62,7 @@ return [
         ]
     ],
 
-    Module::class => [
-        'listeners' => [
-            [
-                'listener' => Listener\DispatchListener::class,
-                'method' => 'onDispatch',
-                'event' => \Zend\Mvc\MvcEvent::EVENT_DISPATCH,
-                'priority' => 1,
-            ], [
-                'listener' => Listener\DispatchListener::class,
-                'method' => 'onDispatch',
-                'event' => \Zend\Mvc\MvcEvent::EVENT_DISPATCH_ERROR,
-                'priority' => 1,
-            ], [
-                'listener' => Listener\RouteListener::class,
-                'method' => 'onRoute',
-                'event' => \Zend\Mvc\MvcEvent::EVENT_ROUTE,
-                'priority' => 1,
-            ]
-        ]
+    'listeners' => [
+        ListenerAggregate::class
     ]
 ];

@@ -3,20 +3,21 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace MSBios\I18n\Initializer;
+namespace MSBios\I18n;
 
 use Interop\Container\ContainerInterface;
-use MSBios\I18n\TranslatorAwareInterface;
 use Zend\I18n\Translator\TranslatorInterface;
 use Zend\ServiceManager\Initializer\InitializerInterface;
 
 /**
  * Class TranslatorInitializer
- * @package MSBios\I18n\Initializer
+ * @package MSBios\I18n
  */
 class TranslatorInitializer implements InitializerInterface
 {
     /**
+     * @inheritdoc
+     *
      * @param ContainerInterface $container
      * @param object $instance
      */
@@ -30,6 +31,8 @@ class TranslatorInitializer implements InitializerInterface
     }
 
     /**
+     * @inheritdoc
+     *
      * @param $an_array
      * @return TranslatorInitializer
      */
