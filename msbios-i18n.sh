@@ -1,8 +1,8 @@
 #!/bin/bash
 
-ASCIILOGO = $( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )/msbios.sh;
+ASCIILOGO=$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )/msbios.sh;
 
-if [-f $ASCIILOGO]; then
+if [ -f $ASCIILOGO ]; then
     bash $ASCIILOGO;
 else
     bash $(pwd)/vendor/bin/msbios.sh
