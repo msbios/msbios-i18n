@@ -6,16 +6,15 @@
 namespace MSBios\I18n\Factory;
 
 use Interop\Container\ContainerInterface;
-use MSBios\I18n\ListenerAggregate;
 use MSBios\I18n\Session\Container;
-use Zend\I18n\Translator\TranslatorInterface;
+use MSBios\Session\SessionManagerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
- * Class ListenerAggregateFactory
+ * Class ContainerFactory
  * @package MSBios\I18n\Factory
  */
-class ListenerAggregateFactory implements FactoryInterface
+class ContainerFactory implements FactoryInterface
 {
     /**
      * @inheritdoc
@@ -23,13 +22,12 @@ class ListenerAggregateFactory implements FactoryInterface
      * @param ContainerInterface $container
      * @param string $requestedName
      * @param array|null $options
-     * @return ListenerAggregate|object
+     * @return Container|object
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        return new ListenerAggregate(
-            $container->get(TranslatorInterface::class),
-            $container->get(Container::class)
-        );
+        /** @var SessionManagerInterface $manager */
+        $manager = $container->get(SessionManagerInterface::class);
+        return new Container($requestedName, $manager);
     }
 }

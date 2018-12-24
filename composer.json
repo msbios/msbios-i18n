@@ -1,7 +1,7 @@
 {
   "name": "msbios/i18n",
   "description": "MSBios I18n",
-  "license": "GPL",
+  "license": "MIT",
   "keywords": [
     "php"
   ],
@@ -30,7 +30,8 @@
     "php": "^5.6 || ^7.0",
     "zendframework/zend-i18n": "^2.7",
     "zendframework/zend-session": "^2.8",
-    "msbios/msbios": "^1.0"
+    "msbios/msbios": "^1.0",
+    "msbios/session": "^1.0"
   },
   "require-dev": {
     "zendframework/zend-component-installer": "^1.0 || ^0.7 || ^1.0.0-dev@dev",

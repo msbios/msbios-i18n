@@ -6,6 +6,7 @@
 return [
     // Retrieve list of modules used in this application.
     'modules' => [
+
         'Zend\Serializer',
         'Zend\Cache',
         'Zend\Mvc\Plugin\FilePrg',
@@ -18,8 +19,12 @@ return [
         'Zend\Mvc\Plugin\Prg',
         'Zend\Router',
         'Zend\I18n',
-        'ZendDeveloperTools',
+
+        'MSBios\Session',
         'MSBios\I18n',
+
+        'ZendDeveloperTools',
+        'SanSessionToolbar'
     ],
     'module_listener_options' => [
         'module_paths' => [

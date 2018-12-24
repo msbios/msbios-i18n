@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5d9bc52410bdbdc05e82090e0fc38d38",
+    "content-hash": "902028fcaf36f38f72b4c17f4b4a29d4",
     "packages": [
         {
             "name": "msbios/msbios",
@@ -54,6 +54,58 @@
                 "php"
             ],
             "time": "2018-12-18T10:47:07+00:00"
+        },
+        {
+            "name": "msbios/session",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/msbios/msbios-session.git",
+                "reference": "0e62edf7146fee20ff4ae32cfe32f5dc3ba971bb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/msbios/msbios-session/zipball/0e62edf7146fee20ff4ae32cfe32f5dc3ba971bb",
+                "reference": "0e62edf7146fee20ff4ae32cfe32f5dc3ba971bb",
+                "shasum": ""
+            },
+            "require": {
+                "zendframework/zend-session": "^2.8"
+            },
+            "require-dev": {
+                "msbios/application": "^1.0",
+                "msbios/debug": "^1.0",
+                "msbios/mongodb": "^1.0",
+                "msbios/test": "^1.0",
+                "san/san-session-toolbar": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "zf": {
+                    "component": "MSBios\\Session"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MSBios\\Session\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Judzhin Miles",
+                    "email": "info@msbios.com"
+                }
+            ],
+            "description": "MSBios Session",
+            "homepage": "https://github.com/msbios/msbios-session",
+            "keywords": [
+                "php"
+            ],
+            "time": "2018-12-21T08:11:04+00:00"
         },
         {
             "name": "ocramius/package-versions",

@@ -24,14 +24,19 @@ class ListenerAggregate extends AbstractListenerAggregate implements TranslatorA
 {
     use TranslatorAwareTrait;
 
+    /** @var Container */
+    protected $container;
+
     /**
      * ListenerAggregate constructor.
      *
      * @param TranslatorInterface $translator
+     * @param Container $container
      */
-    public function __construct(TranslatorInterface $translator)
+    public function __construct(TranslatorInterface $translator, Container $container)
     {
         $this->setTranslator($translator);
+        $this->container = $container;
     }
 
     /**
@@ -43,9 +48,9 @@ class ListenerAggregate extends AbstractListenerAggregate implements TranslatorA
     public function attach(EventManagerInterface $events, $priority = 1)
     {
         $this->listeners[] = $events
-            ->attach(MvcEvent::EVENT_ROUTE, [$this, 'onRoute'], $priority);
-        $this->listeners[] = $events
             ->attach(MvcEvent::EVENT_BOOTSTRAP, [$this, 'onBootstrap'], $priority);
+        $this->listeners[] = $events
+            ->attach(MvcEvent::EVENT_ROUTE, [$this, 'onRoute'], $priority);
         $this->listeners[] = $events
             ->attach(MvcEvent::EVENT_DISPATCH, [$this, 'onDispatch'], $priority);
         $this->listeners[] = $events
@@ -53,6 +58,34 @@ class ListenerAggregate extends AbstractListenerAggregate implements TranslatorA
     }
 
     /**
+     * @inheritdoc
+     *
+     * @param EventInterface $event
+     */
+    public function onBootstrap(EventInterface $event)
+    {
+        /** @var EventManagerInterface $eventManager */
+        $eventManager = $event->getApplication()
+            ->getEventManager();
+
+        /** @var ListenerAggregateInterface $moduleRouteListener */
+        $moduleRouteListener = new ModuleRouteListener;
+        $moduleRouteListener->attach($eventManager);
+
+        /** @var string $current */
+        $current = $this->translator->getLocale();
+
+        $event
+            ->getRouter()
+            ->setDefaultParam('locale', $current);
+
+        $this->container
+            ->setLocale($current);
+    }
+
+    /**
+     * @inheritdoc
+     *
      * @param EventInterface $event
      * @todo https://docs.zendframework.com/zend-mvc-i18n/routing/
      */
@@ -81,28 +114,9 @@ class ListenerAggregate extends AbstractListenerAggregate implements TranslatorA
      *
      * @param EventInterface $event
      */
-    public function onBootstrap(EventInterface $event)
-    {
-        /** @var EventManagerInterface $eventManager */
-        $eventManager = $event->getApplication()
-            ->getEventManager();
-
-        /** @var ListenerAggregateInterface $moduleRouteListener */
-        $moduleRouteListener = new ModuleRouteListener;
-        $moduleRouteListener->attach($eventManager);
-
-        $event->getRouter()->setDefaultParam(
-            'locale',
-            $this->translator->getLocale()
-        );
-    }
-
-    /**
-     * @param EventInterface $event
-     */
     public function onDispatch(EventInterface $event)
     {
-        if ($locale = (new Container)->getLocale()) {
+        if ($locale = $this->container->getLocale()) {
             $this->translator->setLocale($locale);
         }
     }

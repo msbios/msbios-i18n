@@ -16,6 +16,7 @@ class Container extends DefaultContainer
 {
     /**
      * Container constructor.
+     *
      * @param null|string $name
      * @param ManagerInterface|null $manager
      */

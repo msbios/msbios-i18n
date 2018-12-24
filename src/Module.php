@@ -12,7 +12,7 @@ namespace MSBios\I18n;
 class Module extends \MSBios\Module
 {
     /** @const VERSION */
-    const VERSION = '1.0.10';
+    const VERSION = '1.0.11';
 
     /**
      * @inheritdoc
