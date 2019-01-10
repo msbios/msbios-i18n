@@ -100,13 +100,17 @@ class ListenerAggregate extends AbstractListenerAggregate implements TranslatorA
             $this->translator->getLocale()
         );
 
-        $this->translator->setLocale($locale)
+        $this->translator
+            ->setLocale($locale)
             ->setFallbackLocale($locale);
 
         $event->getRouter()
             ->setDefaultParam('locale', $locale);
 
         $routeMatch->setParam('locale', $locale);
+
+        $this->container
+            ->setLocale($locale);
     }
 
     /**
@@ -116,8 +120,9 @@ class ListenerAggregate extends AbstractListenerAggregate implements TranslatorA
      */
     public function onDispatch(EventInterface $event)
     {
-        if ($locale = $this->container->getLocale()) {
-            $this->translator->setLocale($locale);
+        if ($locale = $this->container->getLocale($event->getRouteMatch()->getParam('locale'))) {
+            $this->translator
+                ->setLocale($locale);
         }
     }
 }

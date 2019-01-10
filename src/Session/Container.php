@@ -26,11 +26,12 @@ class Container extends DefaultContainer
     }
 
     /**
-     * @return null
+     * @param null $default
+     * @return mixed|null
      */
-    public function getLocale()
+    public function getLocale($default = null)
     {
-        return $this->locale;
+        return ! empty($this->locale) ? $this->locale : $default;
     }
 
     /**
