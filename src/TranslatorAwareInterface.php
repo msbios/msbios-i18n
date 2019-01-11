@@ -20,8 +20,8 @@ interface TranslatorAwareInterface
     public function getTranslator();
 
     /**
-     * @param $translator
-     * @return $this
+     * @param TranslatorInterface $translator
+     * @return mixed
      */
-    public function setTranslator($translator);
+    public function setTranslator(TranslatorInterface $translator);
 }

@@ -1,2 +1,11 @@
 <h1><?= $this->translate('I18n Module'); ?></h1>
-<p><b><?= $this->translate('Locale param')?>:</b> <?= $this->locale; ?></p>
+<p>
+    <b><?= $this->translate('Locale param')?>:</b> <?= $this->locale; ?><br/>
+    <b><?= $this->translate('Date format')?>:</b>
+    <?= $this->dateFormat(
+        new DateTime,
+        \IntlDateFormatter::MEDIUM,
+        \IntlDateFormatter::SHORT,
+        $this->locale());
+    ?>
+</p>

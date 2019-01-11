@@ -50,7 +50,6 @@
     ],
     "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
     "upload-coverage": "coveralls -v",
-    "msgfmt": "find . -name \\*.po -execdir sh -c 'msgfmt \"$0\" -o `basename $0 .po`.mo' '{}' \\;",
     "serve": "php -S 0.0.0.0:3107 -t public public/index.php"
   },
   "extra": {
@@ -59,7 +58,6 @@
     }
   },
   "bin": [
-    "bin/generate-language.sh",
     "msbios-i18n.sh"
   ]
 }

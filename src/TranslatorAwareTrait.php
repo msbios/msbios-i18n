@@ -14,7 +14,7 @@ use Zend\I18n\Translator\TranslatorInterface;
  */
 trait TranslatorAwareTrait
 {
-    /** @var  TranslatorInterface */
+    /** @var TranslatorInterface */
     protected $translator;
 
     /**
@@ -26,10 +26,10 @@ trait TranslatorAwareTrait
     }
 
     /**
-     * @param $translator
+     * @param TranslatorInterface $translator
      * @return $this
      */
-    public function setTranslator($translator)
+    public function setTranslator(TranslatorInterface $translator)
     {
         $this->translator = $translator;
         return $this;

@@ -70,6 +70,17 @@ return [
         ]
     ],
 
+    'view_helpers' => [
+        'factories' => [
+            View\Helper\LocaleHelper::class =>
+                Factory\LocaleHelperFactory::class
+        ],
+        'aliases' => [
+            'locale' =>
+                View\Helper\LocaleHelper::class
+        ]
+    ],
+
     'listeners' => [
         ListenerAggregate::class
     ]
