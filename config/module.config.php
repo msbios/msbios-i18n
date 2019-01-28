@@ -7,6 +7,7 @@
 namespace MSBios\I18n;
 
 use MSBios\Factory\ModuleFactory;
+use MSBios\I18n\Factory\TranslatorableFactory;
 use Zend\Router\Http\Regex;
 
 return [
@@ -30,7 +31,7 @@ return [
     'controllers' => [
         'factories' => [
             Controller\IndexController::class =>
-                Factory\IndexControllerFactory::class,
+                TranslatorableFactory::class,
         ],
     ],
 
@@ -73,7 +74,7 @@ return [
     'view_helpers' => [
         'factories' => [
             View\Helper\LocaleHelper::class =>
-                Factory\LocaleHelperFactory::class
+                TranslatorableFactory::class
         ],
         'aliases' => [
             'locale' =>

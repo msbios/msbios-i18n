@@ -7,15 +7,14 @@
 namespace MSBios\I18n\Factory;
 
 use Interop\Container\ContainerInterface;
-use MSBios\I18n\View\Helper\LocaleHelper;
 use Zend\I18n\Translator\TranslatorInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
- * Class LocaleHelperFactory
+ * Class TranslatorableFactory
  * @package MSBios\I18n\Factory
  */
-class LocaleHelperFactory implements FactoryInterface
+class TranslatorableFactory implements FactoryInterface
 {
     /**
      * @inheritdoc
@@ -23,10 +22,12 @@ class LocaleHelperFactory implements FactoryInterface
      * @param ContainerInterface $container
      * @param string $requestedName
      * @param array|null $options
-     * @return LocaleHelper|object
+     * @return mixed|object
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        return new LocaleHelper($container->get(TranslatorInterface::class));
+        return new $requestedName(
+            $container->get(TranslatorInterface::class)
+        );
     }
 }
