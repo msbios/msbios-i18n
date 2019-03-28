@@ -61,104 +61,106 @@ if (!function_exists('phpmo_clean_helper')) {
 
 }
 
-/* Parse gettext .po files. */
-/* @link http://www.gnu.org/software/gettext/manual/gettext.html#PO-Files */
-function phpmo_parse_po_file($in)
-{
-    // read .po file
-    $fh = fopen($in, 'r');
-    if ($fh === false) {
-        // Could not open file resource
-        return false;
-    }
-    // results array
-    $hash = array();
-    // temporary array
-    $temp = array();
-    // state
-    $state = null;
-    $fuzzy = false;
-    // iterate over lines
-    while (($line = fgets($fh, 65536)) !== false) {
-        $line = trim($line);
-        if ($line === '')
-            continue;
-        list ($key, $data) = preg_split('/\s/', $line, 2);
+if (!function_exists('phpmo_parse_po_file')) {
+    /* Parse gettext .po files. */
+    /* @link http://www.gnu.org/software/gettext/manual/gettext.html#PO-Files */
+    function phpmo_parse_po_file($in)
+    {
+        // read .po file
+        $fh = fopen($in, 'r');
+        if ($fh === false) {
+            // Could not open file resource
+            return false;
+        }
+        // results array
+        $hash = array();
+        // temporary array
+        $temp = array();
+        // state
+        $state = null;
+        $fuzzy = false;
+        // iterate over lines
+        while (($line = fgets($fh, 65536)) !== false) {
+            $line = trim($line);
+            if ($line === '')
+                continue;
+            list ($key, $data) = preg_split('/\s/', $line, 2);
 
-        switch ($key) {
-            case '#,' : // flag...
-                $fuzzy = in_array('fuzzy', preg_split('/,\s*/', $data));
-            case '#' : // translator-comments
-            case '#.' : // extracted-comments
-            case '#:' : // reference...
-            case '#|' : // msgid previous-untranslated-string
-                // start a new entry
-                if (sizeof($temp) && array_key_exists('msgid', $temp) && array_key_exists('msgstr', $temp)) {
-                    if (!$fuzzy)
-                        $hash[] = $temp;
-                    $temp = array();
-                    $state = null;
-                    $fuzzy = false;
-                }
-                break;
-            case 'msgctxt' :
-                // context
-            case 'msgid' :
-                // untranslated-string
-            case 'msgid_plural' :
-                // untranslated-string-plural
-                $state = $key;
-                $temp[$state] = $data;
-                break;
-            case 'msgstr' :
-                // translated-string
-                $state = 'msgstr';
-                $temp[$state][] = $data;
-                break;
-            default :
-                if (strpos($key, 'msgstr[') !== FALSE) {
-                    // translated-string-case-n
+            switch ($key) {
+                case '#,' : // flag...
+                    $fuzzy = in_array('fuzzy', preg_split('/,\s*/', $data));
+                case '#' : // translator-comments
+                case '#.' : // extracted-comments
+                case '#:' : // reference...
+                case '#|' : // msgid previous-untranslated-string
+                    // start a new entry
+                    if (sizeof($temp) && array_key_exists('msgid', $temp) && array_key_exists('msgstr', $temp)) {
+                        if (!$fuzzy)
+                            $hash[] = $temp;
+                        $temp = array();
+                        $state = null;
+                        $fuzzy = false;
+                    }
+                    break;
+                case 'msgctxt' :
+                    // context
+                case 'msgid' :
+                    // untranslated-string
+                case 'msgid_plural' :
+                    // untranslated-string-plural
+                    $state = $key;
+                    $temp[$state] = $data;
+                    break;
+                case 'msgstr' :
+                    // translated-string
                     $state = 'msgstr';
                     $temp[$state][] = $data;
-                } else {
-                    // continued lines
-                    switch ($state) {
-                        case 'msgctxt' :
-                        case 'msgid' :
-                        case 'msgid_plural' :
-                            $temp[$state] .= "\n" . $line;
-                            break;
-                        case 'msgstr' :
-                            $temp[$state][sizeof($temp[$state]) - 1] .= "\n" . $line;
-                            break;
-                        default :
-                            // parse error
-                            fclose($fh);
-                            return FALSE;
+                    break;
+                default :
+                    if (strpos($key, 'msgstr[') !== FALSE) {
+                        // translated-string-case-n
+                        $state = 'msgstr';
+                        $temp[$state][] = $data;
+                    } else {
+                        // continued lines
+                        switch ($state) {
+                            case 'msgctxt' :
+                            case 'msgid' :
+                            case 'msgid_plural' :
+                                $temp[$state] .= "\n" . $line;
+                                break;
+                            case 'msgstr' :
+                                $temp[$state][sizeof($temp[$state]) - 1] .= "\n" . $line;
+                                break;
+                            default :
+                                // parse error
+                                fclose($fh);
+                                return FALSE;
+                        }
                     }
-                }
-                break;
-        }
-    }
-    fclose($fh);
-
-    // add final entry
-    if ($state == 'msgstr')
-        $hash[] = $temp;
-    // Cleanup data, merge multiline entries, reindex hash for ksort
-    $temp = $hash;
-    $hash = array();
-    foreach ($temp as $entry) {
-        foreach ($entry as & $v) {
-            $v = phpmo_clean_helper($v);
-            if ($v === FALSE) {
-                // parse error
-                return FALSE;
+                    break;
             }
         }
-        $hash[$entry['msgid']] = $entry;
+        fclose($fh);
+
+        // add final entry
+        if ($state == 'msgstr')
+            $hash[] = $temp;
+        // Cleanup data, merge multiline entries, reindex hash for ksort
+        $temp = $hash;
+        $hash = array();
+        foreach ($temp as $entry) {
+            foreach ($entry as & $v) {
+                $v = phpmo_clean_helper($v);
+                if ($v === FALSE) {
+                    // parse error
+                    return FALSE;
+                }
+            }
+            $hash[$entry['msgid']] = $entry;
+        }
+        return $hash;
     }
-    return $hash;
 }
 
 if (!function_exists('phpmo_write_mo_file')) {
@@ -229,5 +231,16 @@ if (!function_exists('phpmo_write_mo_file')) {
         // strings
         $mo .= $strings;
         file_put_contents($out, $mo);
+    }
+}
+
+if (!function_exists('_')) {
+    /**
+     * @param $message
+     * @return string
+     */
+    function _($message)
+    {
+        return ($message) ? gettext(htmlspecialchars($message)) : 'nbsp;';
     }
 }
