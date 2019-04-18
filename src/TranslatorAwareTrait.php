@@ -11,6 +11,7 @@ use Zend\I18n\Translator\TranslatorInterface;
 /**
  * Trait TranslatorAwareTrait
  * @package MSBios\I18n
+ * @deprecated use \Zend\I18n\Translator\TranslatorAwareTrait
  */
 trait TranslatorAwareTrait
 {

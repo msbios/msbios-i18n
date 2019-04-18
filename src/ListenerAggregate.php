@@ -20,9 +20,9 @@ use Zend\Router\RouteMatch;
  * Class ListenerAggregate
  * @package MSBios\I18n
  */
-class ListenerAggregate extends AbstractListenerAggregate implements TranslatorAwareInterface
+class ListenerAggregate extends AbstractListenerAggregate implements \Zend\I18n\Translator\TranslatorAwareInterface
 {
-    use TranslatorAwareTrait;
+    use \Zend\I18n\Translator\TranslatorAwareTrait;
 
     /** @var Container */
     protected $container;

@@ -5,8 +5,8 @@
  */
 namespace MSBios\I18n\Controller;
 
-use MSBios\I18n\TranslatorAwareInterface;
-use MSBios\I18n\TranslatorAwareTrait;
+use Zend\I18n\Translator\TranslatorAwareInterface;
+use Zend\I18n\Translator\TranslatorAwareTrait;
 use Zend\I18n\Translator\TranslatorInterface;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\JsonModel;

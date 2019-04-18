@@ -40,8 +40,8 @@ return [
             // services
             Module::class =>
                 ModuleFactory::class,
-            \Zend\I18n\Translator\TranslatorInterface::class =>
-                \Zend\I18n\Translator\TranslatorServiceFactory::class,
+            // \Zend\I18n\Translator\TranslatorInterface::class =>
+            //     \Zend\I18n\Translator\TranslatorServiceFactory::class,
             Session\Container::class =>
                 Factory\ContainerFactory::class,
 

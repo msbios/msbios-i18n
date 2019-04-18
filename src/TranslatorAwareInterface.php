@@ -11,6 +11,7 @@ use Zend\I18n\Translator\TranslatorInterface;
 /**
  * Interface TranslatorAwareInterface
  * @package MSBios\I18n
+ * @deprecated use \Zend\I18n\Translator\TranslatorAwareInterface
  */
 interface TranslatorAwareInterface
 {
