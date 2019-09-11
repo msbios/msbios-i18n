@@ -28,9 +28,9 @@
   },
   "require": {
     "php": "^7.0 || ^7.1 || ^7.2",
+    "ext-intl": "*",
     "zendframework/zend-i18n": "^2.7",
-    "msbios/session": "^1.0",
-    "ext-intl": "*"
+    "msbios/session": "^1.0"
   },
   "require-dev": {
     "zendframework/zend-component-installer": "^1.0 || ^0.7 || ^1.0.0-dev@dev",

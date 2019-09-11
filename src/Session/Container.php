@@ -35,10 +35,12 @@ class Container extends DefaultContainer
     }
 
     /**
-     * @param null $locale
+     * @param $locale
+     * @return Container
      */
-    public function setLocale($locale)
+    public function setLocale($locale): self
     {
         $this->locale = $locale;
+        return $this;
     }
 }

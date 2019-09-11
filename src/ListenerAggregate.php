@@ -120,6 +120,7 @@ class ListenerAggregate extends AbstractListenerAggregate implements \Zend\I18n\
      */
     public function onDispatch(EventInterface $event)
     {
+        /** @var string $locale */
         if ($locale = $this->container->getLocale()) {
             $this->translator
                 ->setLocale($locale);

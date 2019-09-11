@@ -234,6 +234,17 @@ if (!function_exists('phpmo_write_mo_file')) {
     }
 }
 
+if (!function_exists('gettext')) {
+    /**
+     * @param $message
+     * @return string
+     */
+    function gettext($message)
+    {
+        return ($message) ? htmlspecialchars($message) : 'nbsp;';
+    }
+}
+
 if (!function_exists('_')) {
     /**
      * @param $message
@@ -241,6 +252,6 @@ if (!function_exists('_')) {
      */
     function _($message)
     {
-        return ($message) ? gettext(htmlspecialchars($message)) : 'nbsp;';
+        return gettext($message);
     }
 }

@@ -38,8 +38,8 @@ return [
     'service_manager' => [
         'factories' => [
             // services
-            Module::class =>
-                ModuleFactory::class,
+            // Module::class =>
+            //     ModuleFactory::class,
             // \Zend\I18n\Translator\TranslatorInterface::class =>
             //     \Zend\I18n\Translator\TranslatorServiceFactory::class,
             Session\Container::class =>

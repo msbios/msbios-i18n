@@ -10,6 +10,7 @@ use Zend\I18n\Translator\TranslatorAwareTrait;
 use Zend\I18n\Translator\TranslatorInterface;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\JsonModel;
+use Zend\View\Model\ViewModel;
 
 /**
  * Class IndexController
@@ -30,9 +31,9 @@ class IndexController extends AbstractActionController implements TranslatorAwar
     }
 
     /**
-     * @return \Zend\View\Model\ViewModel
+     * @return ViewModel
      */
-    public function indexAction()
+    public function indexAction(): ViewModel
     {
         return parent::indexAction()
             ->setVariable('locale', $this->params()->fromRoute('locale'));
@@ -41,7 +42,7 @@ class IndexController extends AbstractActionController implements TranslatorAwar
     /**
      * @return JsonModel
      */
-    public function i18nAction()
+    public function i18nAction(): JsonModel
     {
         /** @var TranslatorInterface $translator */
         $translator = $this->getTranslator();
