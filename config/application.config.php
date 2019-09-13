@@ -20,6 +20,7 @@ return [
         'Zend\Router',
         'Zend\I18n',
 
+        'MSBios',
         'MSBios\Session',
         'MSBios\I18n',
 
