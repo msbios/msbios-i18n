@@ -6,7 +6,7 @@
 
 namespace MSBios\I18n;
 
-use Zend\I18n\Translator\TranslatorInterface;
+use Laminas\I18n\Translator\TranslatorInterface;
 
 /**
  * Interface TranslatorAwareInterface

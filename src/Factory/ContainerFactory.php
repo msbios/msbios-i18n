@@ -6,9 +6,9 @@
 namespace MSBios\I18n\Factory;
 
 use Interop\Container\ContainerInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 use MSBios\I18n\Session\Container;
 use MSBios\Session\SessionManagerInterface;
-use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class ContainerFactory

@@ -6,10 +6,10 @@
 namespace MSBios\I18n\Factory;
 
 use Interop\Container\ContainerInterface;
+use Laminas\I18n\Translator\TranslatorInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 use MSBios\I18n\ListenerAggregate;
 use MSBios\I18n\Session\Container;
-use Zend\I18n\Translator\TranslatorInterface;
-use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class ListenerAggregateFactory

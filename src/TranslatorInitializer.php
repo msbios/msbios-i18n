@@ -6,7 +6,7 @@
 namespace MSBios\I18n;
 
 use Interop\Container\ContainerInterface;
-use Zend\I18n\Translator\TranslatorInterface;
+use Laminas\I18n\Translator\TranslatorInterface;
 
 /**
  * Class TranslatorInitializer
@@ -25,7 +25,7 @@ class TranslatorInitializer extends Translator\TranslatorInitializer
     {
         parent::__invoke($container, $instance);
 
-        if ($instance instanceof TranslatorAwareInterface) {
+        if ($instance instanceof \Laminas\I18n\Translator\TranslatorAwareInterface) {
             $instance->setTranslator(
                 $container->get(TranslatorInterface::class)
             );

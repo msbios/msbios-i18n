@@ -6,23 +6,24 @@
 
 namespace MSBios\I18n;
 
+use Laminas\EventManager\AbstractListenerAggregate;
+use Laminas\EventManager\EventInterface;
+use Laminas\EventManager\EventManagerInterface;
+use Laminas\EventManager\ListenerAggregateInterface;
+use Laminas\I18n\Translator\TranslatorAwareInterface as DefaultTranslatorAwareInterfaceAlias;
+use Laminas\I18n\Translator\TranslatorInterface;
+use Laminas\Mvc\ModuleRouteListener;
+use Laminas\Mvc\MvcEvent;
+use Laminas\Router\RouteMatch;
 use MSBios\I18n\Session\Container;
-use Zend\EventManager\AbstractListenerAggregate;
-use Zend\EventManager\EventInterface;
-use Zend\EventManager\EventManagerInterface;
-use Zend\EventManager\ListenerAggregateInterface;
-use Zend\I18n\Translator\TranslatorInterface;
-use Zend\Mvc\ModuleRouteListener;
-use Zend\Mvc\MvcEvent;
-use Zend\Router\RouteMatch;
 
 /**
  * Class ListenerAggregate
  * @package MSBios\I18n
  */
-class ListenerAggregate extends AbstractListenerAggregate implements \Zend\I18n\Translator\TranslatorAwareInterface
+class ListenerAggregate extends AbstractListenerAggregate implements DefaultTranslatorAwareInterfaceAlias
 {
-    use \Zend\I18n\Translator\TranslatorAwareTrait;
+    use \Laminas\I18n\Translator\TranslatorAwareTrait;
 
     /** @var Container */
     protected $container;

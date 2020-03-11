@@ -7,9 +7,9 @@
 namespace MSBios\I18n\Translator;
 
 use Interop\Container\ContainerInterface;
-use Zend\I18n\Translator\TranslatorAwareInterface;
-use Zend\I18n\Translator\TranslatorInterface;
-use Zend\ServiceManager\Initializer\InitializerInterface;
+use Laminas\I18n\Translator\TranslatorAwareInterface;
+use Laminas\I18n\Translator\TranslatorInterface;
+use Laminas\ServiceManager\Initializer\InitializerInterface;
 
 /**
  * Class TranslatorInitializer

@@ -5,8 +5,8 @@
  */
 namespace MSBios\I18n\Session;
 
-use Zend\Session\Container as DefaultContainer;
-use Zend\Session\ManagerInterface;
+use Laminas\Session\Container as DefaultContainer;
+use Laminas\Session\ManagerInterface;
 
 /**
  * Class Container

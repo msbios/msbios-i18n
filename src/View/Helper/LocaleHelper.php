@@ -6,9 +6,9 @@
 
 namespace MSBios\I18n\View\Helper;
 
-use MSBios\I18n\TranslatorAwareTrait;
-use Zend\I18n\Translator\TranslatorInterface;
-use Zend\View\Helper\AbstractHelper;
+use Laminas\I18n\Translator\TranslatorAwareTrait;
+use Laminas\I18n\Translator\TranslatorInterface;
+use Laminas\View\Helper\AbstractHelper;
 
 /**
  * Class LocaleHelper
